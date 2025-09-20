@@ -1,20 +1,39 @@
-import { Rocket } from 'lucide-react';
 
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 export default function Header() {
+
+
+
+  
   return (
     <>
-      <div className="h-full flex items-center gap-2 border-b border-red-600 ">
-        <Rocket 
-          size={30}
-          strokeWidth={2}
-          color='red'
-          fill='#1b9bd8'
-        />
-        <p className='text-lg font-semibold tracking-[2px]'>PITCHLY</p>
+      <div className="flex items-center w-full h-full">
+        <Image
+          src={'/pitchly-logo.png'}
+          alt='pitchly-logo'
+          width={100}
+          height={64}
+          priority={true}
+          className='object-cover object-center h-full cursor-pointer'
+        >
+        </Image>
+
       </div>
-      <div>
-        asd
+      <div className='flex items-center h-full font-poppins'>
+        <Button className='flex items-center gap-2 cursor-pointer group' 
+        >
+          <Image 
+            src={'/google-logo.png'}
+            width={24}
+            height={24}
+            alt='google-logo'
+            className='object-cover object-center h-full cursor-pointer'
+          />
+          <span >Login</span>
+        </Button>
       </div>
+
     </>
   );
 }

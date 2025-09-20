@@ -5,13 +5,13 @@ import Footer from "./Footer";
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
     <>
-      <header className="h-16 items-center flex px-15 justify-between font-poppins border border-red-500">
+      <header className="fixed top-0 left-0 right-0 flex items-center justify-between h-16 bg-white border border-b px-15 ">
         <Header />
       </header>
-      <main>
+      <main className="h-[calc(100vh-64px)] mt-16 font-poppins">
         {children}
       </main>
-      <footer>
+      <footer className="h-screen" >
         <Footer />  
       </footer>
     </>
