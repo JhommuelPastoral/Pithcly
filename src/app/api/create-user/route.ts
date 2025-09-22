@@ -5,7 +5,6 @@ export async function POST(request: Request) {
   try {
     const {data} = await request.json();
     if(!data.email || !data.name) return NextResponse.json({error: "Missing email or name"}, {status: 400});
-    console.log(data);
     const user = await prisma.user.upsert(
       {
         where: {

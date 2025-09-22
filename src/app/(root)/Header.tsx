@@ -23,7 +23,7 @@ export default function Header() {
         <form action={
           async () => {
             "use server"
-            await signIn('google')
+            await signIn('google', {redirectTo: '/dashboard'})
           }}
         >
           <Button 

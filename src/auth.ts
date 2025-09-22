@@ -18,6 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         const response = await axiosInstance.post("/create-user", {data});
         account.userId = response.data.id;
+        console.log("Sign in response", response);  
         return true;
       } catch (error) {
         console.log("Sign in error", error);
@@ -26,21 +27,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     async jwt({ token, account }) {
-    if (account?.userId) {
-      token.userId = account.userId
+      if (account?.userId) {
+        token.userId = account.userId
+      }
+      return token
+    },
+
+    async session({session, token}){
+      if(token){
+        session.user.id = token.userId as string;
+        console.log("Session",session);
+      }
+      return session;
     }
-    console.log(token);
-    return token
-  }
-
-    // async jwt({profile, token}){
-    //   if(profile){
-    //     token.id = profile.userId;
-    //   }
-    //   console.log(token);
-    //   return token
-    // }
-
-
   }
 })
